@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>★ ENHYPEN UNIVERSE ★</title>
+    <!-- Carregando Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregando Fontes Elegantes do Google Fonts (Cinzel para estilo gótico e Poppins para leitura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Configuração do Tailwind (Corrigida sem duplicações) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        gothic: ['Cinzel', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        wine: {
+                            DEFAULT: '#8B0000',
+                            dark: '#580000',
+                            light: '#BC0000',
+                        },
+                        neutralBg: '#DEDEDE',
+                        darkCard: '#141112',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Animação personalizada de batimento cardíaco para os botões de voto */
+        @keyframes pulsePop {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.25); }
+            60% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        .animate-pop {
+            animation: pulsePop 0.4s ease-in-out;
+        }
+
+        /* Tema central no fundo da página com a imagem do ENHYPEN + filtro gótico vinho */
+        body {
+            background-color: #0d0a0b;
+            background-image: 
+                linear-gradient(to bottom, rgba(22, 0, 0, 0.86), rgba(10, 5, 6, 0.94)),
+                url('nova-imagem_2.jpeg'),
+                url('nova-imagem.jpeg'),
+                radial-gradient(circle at top center, #4a0000 0%, #0d0a0b 75%);
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased selection:bg-[#8B0000] selection:text-[#DEDEDE] pb-12 px-4 sm:px-6">
+
+    <!-- Notificação Flutuante (Toast) para feedback visual -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-[#8B0000] text-[#DEDEDE] border border-red-400/30 px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 font-medium">
+        <span class="text-xl">🩸</span>
+        <span id="toast-message">Ação registrada!</span>
+    </div>
+
+    <!-- Container Principal Centralizado -->
+    <div class="max-w-3xl mx-auto pt-6 sm:pt-10 space-y-6">
+
+        <!-- Cabeçalho (Header) -->
+        <header class="bg-gradient-to-b from-[#8B0000] to-[#5e0000] text-[#DEDEDE] text-center rounded-3xl p-6 sm:p-8 shadow-2xl border border-red-900/50 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 pointer-events-none flex justify-between items-center px-6 text-6xl select-none">
+                <span>🦇</span>
+                <span>🥀</span>
+            </div>
+            
+            <h1 class="font-gothic text-2xl sm:text-4xl font-extrabold tracking-wider drop-shadow-md mb-2">
+                ★ENHYPEN UNIVERSE★
+            </h1>
+            <p class="text-sm sm:text-base text-[#DEDEDE]/90 font-light max-w-md mx-auto">
+                Vou compartilhar curiosidades sobre o grupo de kpop ENHYPEN
+            </p>
+        </header>
+
+        <!-- Conteúdo Principal (Main) -->
+        <main class="bg-[#DEDEDE]/95 backdrop-blur-md text-[#1f1a1b] rounded-3xl p-5 sm:p-8 shadow-2xl border border-white/40 space-y-6">
+            
+            <!-- Imagem em Destaque no Tema Central -->
+            <div class="relative group overflow-hidden rounded-2xl shadow-xl border-2 border-[#8B0000]/50 bg-[#1a0505]">
+                <img 
+                    id="main-hero-img"
+                    src="nova-imagem_2.jpeg" 
+                    onerror="handleImageFallback(this)"
+                    alt="Membros do ENHYPEN em pose de grupo, vestindo ternos cinza e vinho em um ambiente sombrio e elegante de estilo gótico."
+                    class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                >
+                <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm text-[#DEDEDE] text-xs px-3 py-1.5 rounded-full border border-[#8B0000]">
+                    Concept: Dark & Gothic 🥀
+                </div>
+            </div>
+
+            <!-- Cabeçalho do Artigo -->
+            <div class="text-center space-y-2 border-b border-gray-400/50 pb-5">
+                <h2 class="font-gothic text-2xl sm:text-3xl font-bold text-[#BC0000]">
+                    De engene para engenes✯
+                </h2>
+                <div class="inline-flex items-center gap-2 bg-[#8B0000]/10 text-[#8B0000] px-4 py-1 rounded-full text-sm font-bold">
+                    <span>✍️</span>
+                    <p class="artigo-autor">Por: Júlia Beatriz</p>
+                </div>
+            </div>
+
+            <!-- Texto Principal do Post -->
+            <div class="text-center sm:text-lg leading-relaxed text-gray-800 px-2 sm:px-6">
+                <p>
+                    Olá! Prepare-se para mergulhar no universo do ENHYPEN com as melhores curiosidades, 
+                    teorias, atualizações e conteúdos exclusivos sobre o grupo. 
+                    Seja muito bem-vindo!❤️
+                </p>
+            </div>
+
+            <!-- Barra de Interações: Like, Dislike, Reações Temáticas e Compartilhar -->
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-4 sm:p-5 border border-gray-300/80 shadow-inner space-y-4">
+                
+                <!-- Linha Superior: Botões de Like e Dislike + Compartilhar -->
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-300/70 pb-4">
+                    
+                    <!-- Grupo Like & Dislike -->
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <!-- Botão de Like -->
+                        <button 
+                            id="like-btn" 
+                            onclick="handleVote('like')"
+                            class="flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-md active:scale-95 bg-white text-[#8B0000] border-2 border-[#8B0000] hover:bg-[#8B0000] hover:text-white cursor-pointer"
+                        >
+                            <span id="like-icon" class="text-lg">👍</span>
+                            <span>Like</span>
+                            <span id="like-count" class="bg-[#8B0000]/15 px-2.5 py-0.5 rounded-full text-sm font-bold">142</span>
+                        </button>
+
+                        <!-- Botão de Dislike -->
+                        <button 
+                            id="dislike-btn" 
+                            onclick="handleVote('dislike')"
+                            class="flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-md active:scale-95 bg-white text-gray-700 border-2 border-gray-400 hover:bg-gray-800 hover:text-white hover:border-gray-800 cursor-pointer"
+                        >
+                            <span id="dislike-icon" class="text-lg">👎</span>
+                            <span>Dislike</span>
+                            <span id="dislike-count" class="bg-gray-200 px-2.5 py-0.5 rounded-full text-sm font-bold">3</span>
+                        </button>
+                    </div>
+
+                    <!-- Botão Compartilhar -->
+                    <button 
+                        onclick="shareBlog()"
+                        class="flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm bg-gray-900 text-[#DEDEDE] hover:bg-black transition-all duration-300 shadow-md active:scale-95 cursor-pointer"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                        </svg>
+                        <span>Compartilhar Blog</span>
+                    </button>
+                </div>
+
+                <!-- Linha Inferior: Reações Temáticas ENGENE -->
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2.5 text-center sm:text-left">
+                        Reações ENGENE (Clique para reagir):
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="reactions-container">
+                        <!-- Reações injetadas via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Interativa: Seletor de Bias no ENHYPEN -->
+            <section class="bg-gradient-to-br from-[#240000] to-[#120d0e] text-[#DEDEDE] rounded-2xl p-5 sm:p-6 shadow-lg border border-[#8B0000]/60 space-y-4">
+                <div class="text-center">
+                    <span class="text-xs uppercase tracking-widest text-red-400 font-semibold">Interação Especial</span>
+                    <h3 class="font-gothic text-xl sm:text-2xl font-bold text-white mt-1">
+                        🩸 Qual é o seu Bias no ENHYPEN?
+                    </h3>
+                    <p class="text-xs sm:text-sm text-gray-300 mt-1">Escolha um membro para desbloquear seu selo exclusivo de ENGENE!</p>
+                </div>
+
+                <!-- Botões dos 7 Membros -->
+                <div class="flex flex-wrap justify-center gap-2" id="bias-buttons">
+                    <!-- Gerados via JavaScript -->
+                </div>
+
+                <!-- Cartão de Resultado do Bias -->
+                <div id="bias-result" class="hidden bg-black/50 border border-[#8B0000] rounded-xl p-4 text-center transition-all duration-500">
+                    <div class="inline-block bg-[#8B0000] text-white text-xs font-bold px-3 py-1 rounded-full mb-2 shadow" id="bias-badge">
+                        Selo ENGENE
+                    </div>
+                    <p class="text-sm sm:text-base text-gray-100 font-medium" id="bias-message"></p>
+                </div>
+            </section>
+
+            <!-- Seção de Comentários -->
+            <section class="pt-4 border-t border-gray-400/50 space-y-5">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-gothic text-xl font-bold text-[#8B0000] flex items-center gap-2">
+                        <span>💬 Mural dos ENGENEs</span>
+                        <span id="comment-count" class="text-xs font-sans bg-[#8B0000] text-white px-2.5 py-0.5 rounded-full">0</span>
+                    </h3>
+                </div>
+
+                <!-- Formulário de Novo Comentário -->
+                <form id="comment-form" onsubmit="addComment(event)" class="bg-white/80 p-4 rounded-2xl border border-gray-300 space-y-3 shadow-sm">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label for="visitor-name" class="block text-xs font-semibold text-gray-700 mb-1">Seu Nome ou Apelido ENGENE *</label>
+                            <input 
+                                type="text" 
+                                id="visitor-name" 
+                                required 
+                                maxlength="30"
+                                placeholder="Ex: SunooLover_BR" 
+                                class="w-full px-3.5 py-2 rounded-xl border border-gray-300 bg-white text-sm focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000]"
+                            >
+                        </div>
+                        <div>
+                            <label for="visitor-bias-tag" class="block text-xs font-semibold text-gray-700 mb-1">Seu Bias (Opcional)</label>
+                            <select 
+                                id="visitor-bias-tag" 
+                                class="w-full px-3.5 py-2 rounded-xl border border-gray-300 bg-white text-sm focus:outline-none focus:border-[#8B0000]"
+                            >
+                                <option value="OT7 ❤️">OT7 (Amo todos!)</option>
+                                <option value="Heeseung 🦌">Heeseung 🦌</option>
+                                <option value="Jay 🦅">Jay 🦅</option>
+                                <option value="Jake 🐕">Jake 🐕</option>
+                                <option value="Sunghoon 🐧">Sunghoon 🐧</option>
+                                <option value="Sunoo 🦊">Sunoo 🦊</option>
+                                <option value="Jungwon 🐈">Jungwon 🐈</option>
+                                <option value="Ni-ki 🐆">Ni-ki 🐆</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="visitor-comment" class="block text-xs font-semibold text-gray-700 mb-1">Deixe sua mensagem para a Júlia e outros fãs *</label>
+                        <textarea 
+                            id="visitor-comment" 
+                            rows="2" 
+                            required 
+                            maxlength="250"
+                            placeholder="Escreva aqui sua teoria favorita, música preferida ou elogio ao blog..." 
+                            class="w-full px-3.5 py-2 rounded-xl border border-gray-300 bg-white text-sm focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000]"
+                        ></textarea>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button 
+                            type="submit" 
+                            class="bg-[#8B0000] hover:bg-[#BC0000] text-[#DEDEDE] font-semibold text-sm px-6 py-2.5 rounded-full shadow-md transition-all active:scale-95 cursor-pointer"
+                        >
+                            Publicar Comentário ✨
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Lista de Comentários -->
+                <div id="comments-list" class="space-y-3">
+                    <!-- Comentários carregados via JS -->
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Rodapé (Footer) -->
+        <footer class="text-center text-xs text-[#DEDEDE]/70 pt-2">
+            <p>★ ENHYPEN UNIVERSE • Criado por Júlia Beatriz • Feito de ENGENE para ENGENEs 🩸</p>
+        </footer>
+
+    </div>
+
+    <!-- Lógica Interativa em JavaScript -->
+    <script>
+        // ==========================================
+        // 0. FALLBACK INTELIGENTE PARA A IMAGEM
+        // ==========================================
+        let fallbackStep = 0;
+        function handleImageFallback(img) {
+            fallbackStep++;
+            if (fallbackStep === 1) {
+                // Tenta o primeiro nome de arquivo enviado pelo usuário
+                img.src = 'nova-imagem.jpeg';
+            } else if (fallbackStep === 2) {
+                // Tenta o segundo nome de arquivo enviado
+                img.src = 'image_39b203.jpg';
+            } else {
+                // Se estiver rodando no preview isolado sem os arquivos locais, exibe banner estilizado
+                img.onerror = null;
+                img.src = 'https://placehold.co/900x480/4a0000/DEDEDE?text=%E2%98%85+ENHYPEN+UNIVERSE+%E2%98%85%0ADark+%26+Gothic+Concept';
+            }
+        }
+
+        // ==========================================
+        // 1. DADOS INICIAIS E ESTADO (LOCALSTORAGE)
+        // ==========================================
+        const STORAGE_KEYS = {
+            VOTE: 'enhypen_blog_user_vote',
+            LIKE_COUNT: 'enhypen_blog_like_count',
+            DISLIKE_COUNT: 'enhypen_blog_dislike_count',
+            REACTIONS: 'enhypen_blog_reactions',
+            USER_REACTIONS: 'enhypen_blog_user_reactions',
+            BIAS: 'enhypen_blog_selected_bias',
+            COMMENTS: 'enhypen_blog_comments'
+        };
+
+        // Estado dos votos (Like / Dislike)
+        let currentVote = localStorage.getItem(STORAGE_KEYS.VOTE) || null; // 'like', 'dislike' ou null
+        let likeCount = parseInt(localStorage.getItem(STORAGE_KEYS.LIKE_COUNT)) || 142;
+        let dislikeCount = parseInt(localStorage.getItem(STORAGE_KEYS.DISLIKE_COUNT)) || 3;
+
+        // Estado das reações temáticas
+        const defaultReactions = {
+            vampire: { emoji: '🧛‍♂️', label: 'Vampiro', count: 58 },
+            blood: { emoji: '🩸', label: 'Bite Me', count: 84 },
+            fire: { emoji: '🔥', label: 'Icônico', count: 49 },
+            star: { emoji: '✨', label: 'Perfeito', count: 67 }
+        };
+        let reactionsData = JSON.parse(localStorage.getItem(STORAGE_KEYS.REACTIONS)) || defaultReactions;
+        let userReacted = JSON.parse(localStorage.getItem(STORAGE_KEYS.USER_REACTIONS)) || {};
+
+        // Dados dos membros do ENHYPEN para o seletor de Bias
+        const membersData = {
+            'Heeseung': {
+                emoji: '🦌',
+                badge: 'Selo Ace Vocals • Heeseung Utted',
+                msg: 'Você escolheu o Heeseung! O Ace do ENHYPEN, dono de vocais angelicais e uma presença de palco hipnotizante.'
+            },
+            'Jay': {
+                emoji: '🦅',
+                badge: 'Selo Rockstar Chic • Jay Utted',
+                msg: 'Você escolheu o Jay! Carisma puro, estilo impecável e uma paixão contagiante pela música e guitarra.'
+            },
+            'Jake': {
+                emoji: '🐕',
+                badge: 'Selo Golden Retriever • Jake Utted',
+                msg: 'Você escolheu o Jake! O charme australiano que ilumina qualquer palco com seu sorriso e energia.'
+            },
+            'Sunghoon': {
+                emoji: '🐧',
+                badge: 'Selo Ice Prince • Sunghoon Utted',
+                msg: 'Você escolheu o Sunghoon! A elegância de um príncipe do gelo combinada com um visual digno de realeza vampírica.'
+            },
+            'Sunoo': {
+                emoji: '🦊',
+                badge: 'Selo Sunshine Fox • Sunoo Utted',
+                msg: 'Você escolheu o Sunoo! Expressividade única que vai do fofo ao sombrio em questão de segundos.'
+            },
+            'Jungwon': {
+                emoji: '🐈',
+                badge: 'Selo Best Leader • Jungwon Utted',
+                msg: 'Você escolheu o Jungwon! O líder incrível do ENHYPEN, com voz marcante e covinhas inesquecíveis.'
+            },
+            'Ni-ki': {
+                emoji: '🐆',
+                badge: 'Selo Dance Prodigy • Ni-ki Utted',
+                msg: 'Você escolheu o Ni-ki! O maknae prodígio da dança que domina cada coreografia com perfeição.'
+            }
+        };
+
+        // Comentários iniciais de exemplo
+        const defaultComments = [
+            {
+                id: 1,
+                name: 'Camila_Engene',
+                bias: 'Sunghoon 🐧',
+                text: 'Amei essa foto com os ternos vinho e cinza! O conceito gótico do ENHYPEN é simplesmente o melhor do K-pop 🩸✨',
+                date: 'Hoje, às 09:30'
+            },
+            {
+                id: 2,
+                name: 'Lucas_DarkBlood',
+                bias: 'Jungwon 🐈',
+                text: 'Parabéns pelo blog, Júlia! Mal posso esperar pelos próximos posts com teorias sobre o universo deles!',
+                date: 'Hoje, às 10:15'
+            }
+        ];
+        let comments = JSON.parse(localStorage.getItem(STORAGE_KEYS.COMMENTS)) || defaultComments;
+
+        // ==========================================
+        // 2. SISTEMA DE LIKE E DISLIKE
+        // ==========================================
+        function updateVoteUI() {
+            const likeBtn = document.getElementById('like-btn');
+            const likeCountEl = document.getElementById('like-count');
+            const dislikeBtn = document.getElementById('dislike-btn');
+            const dislikeCountEl = document.getElementById('dislike-count');
+
+            likeCountEl.textContent = likeCount;
+            dislikeCountEl.textContent = dislikeCount;
+
+            // Estilo do botão Like
+            if (currentVote === 'like') {
+                likeBtn.className = 'flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-md active:scale-95 bg-[#8B0000] text-white border-2 border-[#8B0000] cursor-pointer';
+                likeCountEl.className = 'bg-white/20 px-2.5 py-0.5 rounded-full text-sm font-bold';
+            } else {
+                likeBtn.className = 'flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-md active:scale-95 bg-white text-[#8B0000] border-2 border-[#8B0000] hover:bg-[#8B0000] hover:text-white cursor-pointer';
+                likeCountEl.className = 'bg-[#8B0000]/15 px-2.5 py-0.5 rounded-full text-sm font-bold';
+            }
+
+            // Estilo do botão Dislike
+            if (currentVote === 'dislike') {
+                dislikeBtn.className = 'flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-md active:scale-95 bg-gray-800 text-white border-2 border-gray-800 cursor-pointer';
+                dislikeCountEl.className = 'bg-white/20 px-2.5 py-0.5 rounded-full text-sm font-bold';
+            } else {
+                dislikeBtn.className = 'flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-md active:scale-95 bg-white text-gray-700 border-2 border-gray-400 hover:bg-gray-800 hover:text-white hover:border-gray-800 cursor-pointer';
+                dislikeCountEl.className = 'bg-gray-200 px-2.5 py-0.5 rounded-full text-sm font-bold';
+            }
+        }
+
+        function handleVote(type) {
+            const iconEl = document.getElementById(type === 'like' ? 'like-icon' : 'dislike-icon');
+            iconEl.classList.remove('animate-pop');
+            void iconEl.offsetWidth;
+            iconEl.classList.add('animate-pop');
+
+            if (type === 'like') {
+                if (currentVote === 'like') {
+                    likeCount--;
+                    currentVote = null;
+                } else {
+                    if (currentVote === 'dislike') dislikeCount--;
+                    likeCount++;
+                    currentVote = 'like';
+                    showToast('Você deu Like no post! ❤️');
+                }
+            } else if (type === 'dislike') {
+                if (currentVote === 'dislike') {
+                    dislikeCount--;
+                    currentVote = null;
+                } else {
+                    if (currentVote === 'like') likeCount--;
+                    dislikeCount++;
+                    currentVote = 'dislike';
+                    showToast('Feedback registrado! 👎');
+                }
+            }
+
+            if (currentVote) {
+                localStorage.setItem(STORAGE_KEYS.VOTE, currentVote);
+            } else {
+                localStorage.removeItem(STORAGE_KEYS.VOTE);
+            }
+            localStorage.setItem(STORAGE_KEYS.LIKE_COUNT, likeCount);
+            localStorage.setItem(STORAGE_KEYS.DISLIKE_COUNT, dislikeCount);
+
+            updateVoteUI();
+        }
+
+        // ==========================================
+        // 3. REAÇÕES TEMÁTICAS ENGENE
+        // ==========================================
+        function renderReactions() {
+            const container = document.getElementById('reactions-container');
+            container.innerHTML = '';
+
+            Object.keys(reactionsData).forEach(key => {
+                const item = reactionsData[key];
+                const active = userReacted[key] === true;
+
+                const btn = document.createElement('button');
+                btn.onclick = () => toggleReaction(key);
+                btn.className = `flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-sm font-medium border transition-all duration-200 active:scale-95 cursor-pointer ${
+                    active 
+                    ? 'bg-[#8B0000] text-white border-[#8B0000] shadow-md' 
+                    : 'bg-white text-gray-700 border-gray-300 hover:border-[#8B0000] hover:bg-red-50'
+                }`;
+
+                btn.innerHTML = `
+                    <span class="text-base">${item.emoji}</span>
+                    <span>${item.label}</span>
+                    <span class="text-xs font-bold px-1.5 py-0.5 rounded-full ${active ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-700'}">
+                        ${item.count}
+                    </span>
+                `;
+                container.appendChild(btn);
+            });
+        }
+
+        function toggleReaction(key) {
+            if (userReacted[key]) {
+                reactionsData[key].count--;
+                userReacted[key] = false;
+            } else {
+                reactionsData[key].count++;
+                userReacted[key] = true;
+            }
+
+            localStorage.setItem(STORAGE_KEYS.REACTIONS, JSON.stringify(reactionsData));
+            localStorage.setItem(STORAGE_KEYS.USER_REACTIONS, JSON.stringify(userReacted));
+            renderReactions();
+        }
+
+        // ==========================================
+        // 4. SELETOR DE BIAS NO ENHYPEN
+        // ==========================================
+        function renderBiasSelector() {
+            const container = document.getElementById('bias-buttons');
+            const savedBias = localStorage.getItem(STORAGE_KEYS.BIAS);
+            container.innerHTML = '';
+
+            Object.keys(membersData).forEach(member => {
+                const info = membersData[member];
+                const isSelected = savedBias === member;
+
+                const btn = document.createElement('button');
+                btn.onclick = () => selectBias(member);
+                btn.className = `px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer border ${
+                    isSelected
+                    ? 'bg-[#8B0000] text-white border-red-400 shadow-lg scale-105'
+                    : 'bg-white/10 text-[#DEDEDE] border-white/20 hover:bg-[#8B0000]/60 hover:border-red-400/50'
+                }`;
+                btn.textContent = `${info.emoji} ${member}`;
+                container.appendChild(btn);
+            });
+
+            if (savedBias && membersData[savedBias]) {
+                showBiasResult(savedBias);
+            }
+        }
+
+        function selectBias(member) {
+            localStorage.setItem(STORAGE_KEYS.BIAS, member);
+            renderBiasSelector();
+            showBiasResult(member);
+        }
+
+        function showBiasResult(member) {
+            const resultBox = document.getElementById('bias-result');
+            const badgeEl = document.getElementById('bias-badge');
+            const msgEl = document.getElementById('bias-message');
+            const info = membersData[member];
+
+            badgeEl.textContent = `${info.emoji} ${info.badge}`;
+            msgEl.textContent = info.msg;
+            resultBox.classList.remove('hidden');
+        }
+
+        // ==========================================
+        // 5. SEÇÃO DE COMENTÁRIOS
+        // ==========================================
+        function escapeHTML(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function renderComments() {
+            const list = document.getElementById('comments-list');
+            const countBadge = document.getElementById('comment-count');
+            countBadge.textContent = comments.length;
+            list.innerHTML = '';
+
+            comments.forEach(comment => {
+                const card = document.createElement('div');
+                card.className = 'bg-white/90 p-4 rounded-2xl border border-gray-300/90 shadow-sm space-y-1.5 transition-all hover:border-[#8B0000]/40';
+                
+                card.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-sm text-[#8B0000]">${escapeHTML(comment.name)}</span>
+                            <span class="text-[11px] font-medium bg-[#8B0000]/10 text-[#8B0000] px-2 py-0.5 rounded-full">
+                                ${escapeHTML(comment.bias)}
+                            </span>
+                        </div>
+                        <span class="text-xs text-gray-500">${escapeHTML(comment.date)}</span>
+                    </div>
+                    <p class="text-sm text-gray-800 leading-relaxed">${escapeHTML(comment.text)}</p>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        function addComment(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('visitor-name');
+            const biasInput = document.getElementById('visitor-bias-tag');
+            const textInput = document.getElementById('visitor-comment');
+
+            const name = nameInput.value.trim();
+            const bias = biasInput.value;
+            const text = textInput.value.trim();
+
+            if (!name || !text) return;
+
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            const newComment = {
+                id: Date.now(),
+                name: name,
+                bias: bias,
+                text: text,
+                date: `Agora (${hours}:${minutes})`
+            };
+
+            comments.unshift(newComment);
+            localStorage.setItem(STORAGE_KEYS.COMMENTS, JSON.stringify(comments));
+
+            textInput.value = '';
+            renderComments();
+            showToast('Comentário publicado no mural! 💬');
+        }
+
+        // ==========================================
+        // 6. BOTÃO COMPARTILHAR + FEEDBACK VISUAL
+        // ==========================================
+        function shareBlog() {
+            const url = window.location.href;
+            const tempInput = document.createElement('input');
+            tempInput.value = url;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast('Link copiado! Compartilhe com outros ENGENEs 🩸');
+            } catch (err) {
+                showToast('Pronto para compartilhar o ENHYPEN UNIVERSE! ★');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            const msgEl = document.getElementById('toast-message');
+            
+            msgEl.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+
+        // ==========================================
+        // INICIALIZAÇÃO AO CARREGAR A PÁGINA
+        // ==========================================
+        window.onload = function() {
+            updateVoteUI();
+            renderReactions();
+            renderBiasSelector();
+            renderComments();
+        };
+    </script>
+</body>
+</html>
